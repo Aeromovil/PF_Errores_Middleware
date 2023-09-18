@@ -4,7 +4,7 @@
   gather_facts: no
   ignore_errors: yes
   vars_files:
-    - variables/main.yml
+    - vars/main.yml
   tasks:
     - name: Ejecutar comandos
       command: "{{ item.command }}"
