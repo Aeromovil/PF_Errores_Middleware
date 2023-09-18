@@ -1,0 +1,15 @@
+---
+- name: Ejecutar comandos desde el archivo vars/main.yml
+  hosts: all
+  gather_facts: no
+  ignore_errors: yes
+  vars_files:
+    - variables/main.yml
+  tasks:
+    - name: Ejecutar comandos
+      command: "{{ item.command }}"
+      register: result
+      with_items: "{{ comandos }}"
+
+    - debug:
+        var: result.stdout_lines
