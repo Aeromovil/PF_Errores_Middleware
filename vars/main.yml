@@ -1,20 +1,20 @@
 ---
 comandos:
   - name: MensajeError
-    command: "grep 'MensajeError' server.log |awk -F '>' '{{ print $8 }}' |awk -F '<' '{{ print $1 }}' |sort -n|uniq -c"
+    command: /bin/sh -i -c "grep 'MensajeError' server.log |awk -F '>' '{{ print $8 }}' |awk -F '<' '{{ print $1 }}' |sort -n|uniq -c"
   - name: IOException
-    command: "grep IOException server.log |awk -F ' ' '{{ print $7 }}' |sort -n|uniq -c"
+    command: /bin/sh -i -c "grep IOException server.log |awk -F ' ' '{{ print $7 }}' |sort -n|uniq -c"
   - name: FailedGettingEntity
-    command: "grep 'Failed getting entity' server.log |awk -F ':' '{{ print $4 }}'|grep 400 |sort -n |uniq -c"
+    command: /bin/sh -i -c "grep 'Failed getting entity' server.log |awk -F ':' '{{ print $4 }}'|grep 400 |sort -n |uniq -c"
   - name: SQLError
-    command: "grep 'SQL Error' server.log |awk -F ' ' '{{ print $7,$8,$9,$10,$11 }}' |sort -n |uniq -c |sort -n"
+    command: /bin/sh -i -c "grep 'SQL Error' server.log |awk -F ' ' '{{ print $7,$8,$9,$10,$11 }}' |sort -n |uniq -c |sort -n"
   - name: ErrorPageFilter
-    command: "grep 'ErrorPageFilter' server.log |grep Forwarding |awk -F ' ' '{{ print $7,$9,$13 }}' |sort -n |uniq -c |sort -n"
+    command: /bin/sh -i -c "grep 'ErrorPageFilter' server.log |grep Forwarding |awk -F ' ' '{{ print $7,$9,$13 }}' |sort -n |uniq -c |sort -n"
   - name: ReadTimedOut
-    command: "grep 'Read timed out' server.log |awk -F ')' '{{ print $2 }}' |sort -n |uniq -c"
+    command: /bin/sh -i -c "grep 'Read timed out' server.log |awk -F ')' '{{ print $2 }}' |sort -n |uniq -c"
   - name: UpdateBase
-    command: "grep UpdateBase server.log |awk -F ')' '{{ print $2 }}' |sort -n |uniq -c"
+    command: /bin/sh -i -c "grep UpdateBase server.log |awk -F ')' '{{ print $2 }}' |sort -n |uniq -c"
   - name: RespuestaSINC
-    command: "grep 'Respuesta SINC' server.log |grep -i error |awk -F ':' '{{ print $6 }}'|awk -F ',' '{{ print $1 }}' |sort -n |uniq -c"
+    command: /bin/sh -i -c "grep 'Respuesta SINC' server.log |grep -i error |awk -F ':' '{{ print $6 }}'|awk -F ',' '{{ print $1 }}' |sort -n |uniq -c"
   - name: ErrorPerformingLoadCommand
-    command: "grep ' Error performing load command' server.log|awk -F ':' '{{ print $4,$6,$7 }}'|awk -F ',' '{{ print $1 }}' |sort -n |uniq -c |sort -n"
+    command: /bin/sh -i -c "grep ' Error performing load command' server.log|awk -F ':' '{{ print $4,$6,$7 }}'|awk -F ',' '{{ print $1 }}' |sort -n |uniq -c |sort -n"
